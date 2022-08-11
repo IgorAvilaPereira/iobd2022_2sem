@@ -75,3 +75,29 @@ INSERT INTO premios (nome, ano_premiacao, cod_filme) VALUES
 ('Globo de Ouro - Melhor Animação', 1999, 4),
 ('Globo de Ouro - Melhor Animação', 2001, 5),
 ('Oscar - Melhor Atriz Coadjuvante', 1997, 1);
+
+
+-- 2) cinema=# SELECT nome FROM diretores;
+-- 3) cinema=# SELECT nome FROM filmes WHERE categoria = 'Animação';
+-- 4) cinema=# UPDATE salas SET capacidade = 200 WHERE numero = 202;
+-- 5) cinema=# UPDATE salas_filmes SET numero_sala = 202 WHERE data = '2014-04-14';
+-- 6) by Gabryel: ON DELETE CASCADE nas fk's correspondentes
+-- 6) by Geraldo: Criando uma transação
+-- SQL da Transação:
+/*
+BEGIN;
+DELETE FROM salas_filmes WHERE cod_filme IN (SELECT codigo FROM filmes WHERE cod_diretor IN (SELECT codigo FROM diretores WHERE nome = 'Fulano de Tal da Silva'));
+
+DELETE FROM premios  WHERE cod_filme IN (SELECT codigo FROM filmes WHERE cod_diretor in (SELECT codigo FROM diretores WHERE nome = 'Fulano de Tal da Silva'));
+
+DELETE FROM filmes WHERE cod_diretor IN (SELECT codigo FROM diretores WHERE nome = 'Fulano de Tal da Silva');
+
+DELETE FROM diretores WHERE nome = 'Fulano de Tal da Silva';
+
+COMMIT;
+*/
+-- 7) cinema=# SELECT filmes.nome, filmes.categoria FROM filmes INNER JOIN diretores ON (filmes.cod_diretor = diretores.codigo) WHERE diretores.nome = 'Ciclana das Neves';
+-- 8) cinema=# SELECT horario FROM salas_filmes WHERE data = '2014-04-15';
+-- 9) cinema=# select premios.nome, premios.ano_premiacao FROM filmes INNER JOIN premios ON (filmes.codigo = premios.cod_filme) WHERE filmes.nome = 'Shrek';
+-- 10) cinema=# SELECT codigo, nome, categoria FROM filmes WHERE ano_lancamento > 2000;
+
