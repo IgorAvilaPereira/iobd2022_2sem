@@ -1,0 +1,10 @@
+Notícias públicas (visível para não-assinantes) e privadas (somente para assinantes) ==> ok
+Newsletter de notícias  => OK
+Banners publicitários => ok
+Planos de assinatura: Mensal, anual, trimestral e etc. => ok
+Notícias em destaque => ????
+Galeria de Fotos e Vídeos
+Administradores/Contas de Administradores
+Perfil de usuários: jornalista, super-usuário, estagiários
+Colunas/Blogs por Jornalistas
+Tipos de Assinantes: Pessoa Física e Pessoa Jurídica e etc.
