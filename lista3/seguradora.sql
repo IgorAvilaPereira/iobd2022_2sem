@@ -58,6 +58,23 @@ INSERT INTO acidente (descricao, data, hora, local, valor, carro_chassi) VALUES
 
 -- 3) seguradora_bd=# select cliente.nome, count(*) FROM cliente inner join carro on (cliente.cpf = carro.cliente_cpf) inner join acidente on (acidente.carro_chassi = carro.chassi) WHERE data >= '2014-01-01' AND data < '2014-03-01' group by cliente.nome;
 
+-- 4) seguradora_bd=# DELETE FROM acidente WHERE extract(year from current_date) - extract(year from data) > 5;
+
+
+-- 5) seguradora_bd=# SELECT cliente.nome, sum(acidente.valor) from cliente inner join carro on (cliente.cpf = carro.cliente_cpf) inner join acidente on (carro.chassi = acidente.carro_chassi) WHERE extract(year from acidente.data) = 2013 group by cliente.nome;
+
+-- 6) seguradora_bd=# SELECT cliente.nome, sum(acidente.valor) from cliente inner join carro on (cliente.cpf = carro.cliente_cpf) inner join acidente on (carro.chassi = acidente.carro_chassi) WHERE extract(year from acidente.data) >= 2012 AND extract(year from data) <= 2013 group by cliente.nome having sum(acidente.valor) > 50000;
+
+
+-- 7) seguradora_bd=# SELECT carro.placa, sum(acidente.valor) from carro inner join acidente on (carro.chassi = acidente.carro_chassi) where extract(year from acidente.data) = 2022 group by carro.placa having sum(acidente.valor) in (SELECT sum(acidente.valor) from carro inner join acidente on (carro.chassi = acidente.carro_chassi) where extract(year from acidente.data) = 2022 group by carro.placa order by sum(acidente.valor) DESC limit 1);
+
+
+-- 8) seguradora_bd=# select cliente.nome from cliente where cpf not in (select cliente.cpf from cliente inner join carro on (cliente.cpf = carro.cliente_cpf) inner join acidente on (acidente.carro_chassi = carro.chassi) where extract(year from acidente.data) >= 2021 and extract(year from acidente.data) <= 2022);
+
+-- 8) seguradora_bd=# select cliente.cpf, cliente.nome from cliente                               except select cliente.cpf, cliente.nome from cliente inner join carro on (cliente.cpf = carro.cliente_cpf) inner join acidente on (acidente.carro_chassi = carro.chassi) where extract(year from acidente.data) >= 2021 and extract(year from acidente.data) <= 2022;
+
+
+
 
 
 
