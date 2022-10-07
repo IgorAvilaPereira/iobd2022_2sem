@@ -18,11 +18,11 @@ import java.sql.SQLException;
  *
  * @author iapereira
  */
-public class PDF {
+public class QualquerArquivo {
 
     public static void main(String[] args) throws SQLException, IOException {
-        salvar("/home/iapereira/teste.pdf");
-        renderizar("/home/iapereira/teste.pdf");
+        salvar("/home/iapereira/teste.png");
+        renderizar("/home/iapereira/teste.png");
 
     }
 

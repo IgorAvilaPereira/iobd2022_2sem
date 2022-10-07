@@ -18,7 +18,7 @@ import javax.swing.JLabel;
  *
  * @author iapereira
  */
-public class Images {
+public class Imagens {
     
     // main
     public static void main(String[] args) throws FileNotFoundException, SQLException, IOException {
