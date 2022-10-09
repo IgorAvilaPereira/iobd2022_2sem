@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 /**
  *
  * @author iapereira
+ * https://jdbc.postgresql.org/documentation/binary-data/
  */
 public class MainBYTEA {
 
