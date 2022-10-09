@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package apresentacao;
+package extras;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -21,13 +21,13 @@ import java.sql.SQLException;
 public class QualquerArquivo {
 
     public static void main(String[] args) throws SQLException, IOException {
-        salvar("/home/iapereira/teste.png");
-        renderizar("/home/iapereira/teste.png");
+        escrita("/home/iapereira/locadora-de-filmes-online.txt");
+        leitura("/home/iapereira/locadora-de-filmes-online.txt");
 
     }
 
     // salvar
-    private static void salvar(String url) throws SQLException, FileNotFoundException, IOException {
+    private static void escrita(String url) throws SQLException, FileNotFoundException, IOException {
         Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/teste", "postgres", "postgres");
         File file = new File(url);
         FileInputStream fis = new FileInputStream(file);
@@ -39,7 +39,7 @@ public class QualquerArquivo {
         fis.close();
     }
 
-    private static void renderizar(String url) throws SQLException {
+    private static void leitura(String url) throws SQLException {
 
         if (Desktop.isDesktopSupported()) {
             try {

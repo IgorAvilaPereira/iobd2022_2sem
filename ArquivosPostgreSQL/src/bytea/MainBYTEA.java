@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package apresentacao;
+package bytea;
 
 import java.awt.FlowLayout;
 import java.io.File;
@@ -18,17 +18,16 @@ import javax.swing.JLabel;
  *
  * @author iapereira
  */
-public class Imagens {
-    
-    // main
+public class MainBYTEA {
+
+// funciona com o arquivo em qualquer diretorio
     public static void main(String[] args) throws FileNotFoundException, SQLException, IOException {
-        renderizar("teste.png");
-//      salvar("/home/iapereira/teste.png");
+      escrita("/home/iapereira/teste2.png");
+        leitura("teste2.png");
     }
 
     // renderizar
-    private static void renderizar(String imgname) throws SQLException {   
-        
+    private static void leitura(String imgname) throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/teste", "postgres", "postgres");;
         PreparedStatement ps = conn.prepareStatement("SELECT img FROM images WHERE imgname = ?");
         ps.setString(1, imgname);
@@ -58,15 +57,16 @@ public class Imagens {
     }
 
     // salvar
-    private static void salvar(String url) throws SQLException, FileNotFoundException, IOException {        
+    private static void escrita(String url) throws SQLException, FileNotFoundException, IOException {
         Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/teste", "postgres", "postgres");
         File file = new File(url);
         FileInputStream fis = new FileInputStream(file);
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO images VALUES (?, ?)");
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO images (imgname, img) VALUES (?, ?)");
         ps.setString(1, file.getName());
         ps.setBinaryStream(2, fis, file.length());
         ps.executeUpdate();
         ps.close();
         fis.close();
     }
+
 }
