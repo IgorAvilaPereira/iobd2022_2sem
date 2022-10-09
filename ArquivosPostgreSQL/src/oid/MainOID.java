@@ -26,8 +26,8 @@ import org.postgresql.largeobject.LargeObjectManager;
 public class MainOID {
 
     public static void main(String[] args) throws SQLException, IOException {
-        escrita2("teste2", "/home/iapereira/teste2.png");
-        leitura("teste2");
+        escrita2("teste6", "/home/iapereira/teste6.png");
+        leitura("teste6");
     }
 
     private static void leitura(String imgname) throws SQLException {
@@ -78,9 +78,8 @@ public class MainOID {
         LargeObjectManager lobj = conn.unwrap(org.postgresql.PGConnection.class).getLargeObjectAPI();
 
         long oid = lobj.createLO(LargeObjectManager.READ | LargeObjectManager.WRITE);
-
+        
         LargeObject obj = lobj.open(oid, LargeObjectManager.WRITE);
-
         
         File file = new File(url_imgoid);
         FileInputStream fis = new FileInputStream(file);
