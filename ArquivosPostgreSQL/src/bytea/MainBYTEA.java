@@ -64,7 +64,7 @@ public class MainBYTEA {
         FileInputStream fis = new FileInputStream(file);
         PreparedStatement ps = conn.prepareStatement("INSERT INTO images (imgname, img) VALUES (?, ?)");
         ps.setString(1, file.getName());
-        ps.setBinaryStream(2, fis, file.length());
+        ps.setBinaryStream(2, fis, file.length());        
         ps.executeUpdate();
         ps.close();
         fis.close();
