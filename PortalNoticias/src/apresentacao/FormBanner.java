@@ -311,7 +311,6 @@ public class FormBanner extends javax.swing.JFrame {
 
     private void visualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarActionPerformed
         try {
-            // TODO add your handling code here:
             mostrarBanner(Integer.parseInt(this.inputId.getText()));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "erro", "erro", JOptionPane.ERROR_MESSAGE);
